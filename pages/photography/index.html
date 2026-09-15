@@ -51,6 +51,21 @@
 @media(max-width:480px) {
   .gallery-grid { columns:1; }
 }
+
+/* PORTFOLIO — highlights scroll + category sections + lightbox */
+.portfolio-highlights { display:flex; gap:10px; overflow-x:auto; padding:0 10vw 8px; scrollbar-width:thin; scrollbar-color:rgba(191,192,171,0.3) transparent; }
+.portfolio-highlights img { flex:0 0 auto; width:220px; height:280px; object-fit:cover; border-radius:4px; cursor:pointer; transition:opacity 0.25s; }
+.portfolio-highlights img:hover { opacity:0.85; }
+.portfolio-cat { padding:0 10vw; margin-top:56px; }
+.portfolio-cat-label { display:block; margin-bottom:20px; }
+.portfolio-lightbox { display:none; position:fixed; inset:0; background:rgba(20,16,14,0.94); z-index:999; align-items:center; justify-content:center; padding:40px; }
+.portfolio-lightbox.open { display:flex; }
+.portfolio-lightbox img { max-width:88vw; max-height:85vh; object-fit:contain; border-radius:2px; }
+.portfolio-lightbox .lb-close { position:absolute; top:20px; right:28px; color:#f8f6f1; font-size:34px; cursor:pointer; background:none; border:none; line-height:1; }
+.portfolio-lightbox .lb-nav { position:absolute; top:50%; transform:translateY(-50%); color:#f8f6f1; font-size:38px; cursor:pointer; background:none; border:none; padding:10px 16px; opacity:0.65; transition:opacity 0.2s; }
+.portfolio-lightbox .lb-nav:hover { opacity:1; }
+.lb-prev { left:10px; } .lb-next { right:10px; }
+@media(max-width:768px){ .portfolio-highlights img { width:160px; height:200px; } }
 </style>
 <!-- Open Graph -->
 <meta property="og:title" content="Retreat & Wellness Photographer London — Montana Cindy · Mindful Earth">
@@ -149,75 +164,189 @@
   </div>
 </section>
 
-<!-- GALLERY -->
-<section style="background:var(--white);padding:80px 0;" id="gallerySection">
-  <div style="padding:0 10vw;margin-bottom:48px;">
-    <span class="eyebrow">Gallery</span>
+<!-- PORTFOLIO -->
+<section style="background:var(--white);padding:80px 0;">
+  <div style="padding:0 10vw;margin-bottom:40px;">
+    <span class="eyebrow">Portfolio</span>
     <h2 style="font-family:'Gloock',serif;font-size:clamp(28px,3vw,40px);color:var(--bark);line-height:1.1;margin-bottom:12px;">Wellness, retreats,<br><em style="font-style:italic;color:var(--mauve);">and the spaces between.</em></h2>
-    <p style="font-size:15px;color:var(--forest);max-width:540px;line-height:1.8;"></p>
   </div>
 
-  <!-- Gallery grid — add images here: src="../../images/photo-gallery-01.jpg" etc -->
-  <!-- IBIZA 2026 GALLERY -->
-<div style="padding:48px 10vw 0;border-top:1px solid rgba(191,192,171,0.15);">
-  <span class="eyebrow">Sunshine Souls &middot; Ibiza 2026</span>
-  <h3 style="font-family:'Gloock',serif;font-size:clamp(20px,2.2vw,28px);color:var(--bark);margin:8px 0 24px;line-height:1.2;">Sunshine Souls <em style="font-style:italic;color:var(--mauve);">Ibiza.</em></h3>
-</div>
-<div class="gallery-grid" style="padding:0 10vw 48px;">
-  <div class="gallery-item"><img src="../../images/ibiza-2026-01.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-02.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-03.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-04.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-05.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-06.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-07.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-08.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-09.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-10.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-  <div class="gallery-item"><img src="../../images/ibiza-2026-11.jpg" alt="Ibiza 2026" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
-</div>
-
-<!-- MAIN PORTFOLIO -->
-<div style="padding:48px 10vw 0;">
-  <span class="eyebrow">The portfolio</span>
-  <h3 style="font-family:'Gloock',serif;font-size:clamp(20px,2.2vw,28px);color:var(--bark);margin:8px 0 24px;line-height:1.2;">Special little <em style="font-style:italic;color:var(--mauve);">moments.</em></h3>
-</div>
-<div class="gallery-grid" id="galleryGrid">
-    <!-- Upload your photos as photo-gallery-01.jpg through photo-gallery-20.jpg into /images/ -->
-    <!-- Each will appear here automatically once uploaded -->
-    <a href="../../images/photo-gallery-01.jpg" target="_blank"><img src="../../images/photo-gallery-01.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-02.jpg" target="_blank"><img src="../../images/photo-gallery-02.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-03.jpg" target="_blank"><img src="../../images/photo-gallery-03.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-04.jpg" target="_blank"><img src="../../images/photo-gallery-04.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-05.jpg" target="_blank"><img src="../../images/photo-gallery-05.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-06.jpg" target="_blank"><img src="../../images/photo-gallery-06.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-07.jpg" target="_blank"><img src="../../images/photo-gallery-07.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-08.jpg" target="_blank"><img src="../../images/photo-gallery-08.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-09.jpg" target="_blank"><img src="../../images/photo-gallery-09.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-10.jpg" target="_blank"><img src="../../images/photo-gallery-10.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-11.jpg" target="_blank"><img src="../../images/photo-gallery-11.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-12.jpg" target="_blank"><img src="../../images/photo-gallery-12.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-13.jpg" target="_blank"><img src="../../images/photo-gallery-13.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-14.jpg" target="_blank"><img src="../../images/photo-gallery-14.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-15.jpg" target="_blank"><img src="../../images/photo-gallery-15.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-16.jpg" target="_blank"><img src="../../images/photo-gallery-16.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-17.jpg" target="_blank"><img src="../../images/photo-gallery-17.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-18.jpg" target="_blank"><img src="../../images/photo-gallery-18.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-19.jpg" target="_blank"><img src="../../images/photo-gallery-19.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
-    <a href="../../images/photo-gallery-20.jpg" target="_blank"><img src="../../images/photo-gallery-20.jpg" alt="Retreat photography" onerror="this.closest('a').style.display='none'"></a>
+  <!-- HIGHLIGHTS — mixed scroll across every set, reuses the same files as the full sections below, just interleaved for variety. To add another row, repeat the same three-image pattern (Ibiza, Nicaragua, Moment) with the next numbers. -->
+  <div class="portfolio-highlights">
+    <img class="lb-img" src="../../images/ibiza-2026-01.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2024-01.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-01.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/ibiza-2026-02.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2024-02.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-02.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/ibiza-2026-03.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2024-03.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-03.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/ibiza-2026-04.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2024-04.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-04.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/ibiza-2026-05.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2024-05.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-05.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/ibiza-2026-06.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2024-06.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-06.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/ibiza-2026-07.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2025-01.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-07.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/ibiza-2026-08.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/nicaragua-2025-02.jpg" alt="Nicaragua" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
+    <img class="lb-img" src="../../images/portfolio-moment-08.jpg" alt="Moment" loading="lazy" onerror="this.style.display='none'" onclick="openLightbox(this)">
   </div>
-<!-- IBIZA 2026 GALLERY -->
-<div style="grid-column:1/-1;margin:48px 0 24px;padding-top:40px;border-top:1px solid rgba(191,192,171,0.2);">
-  <span class="eyebrow">Sunshine Souls · Ibiza 2026</span>
-  <h3 style="font-family:'Gloock',serif;font-size:clamp(20px,2.2vw,28px);color:var(--bark);margin-top:8px;line-height:1.2;">Sunshine Souls <em style="font-style:italic;color:var(--mauve);">Ibiza.</em></h3>
-</div>
 
+  <!-- FULL PORTFOLIO — everything, organized by set -->
+  <div class="portfolio-cat">
+    <span class="eyebrow portfolio-cat-label">Sunshine Souls &middot; Ibiza 2026</span>
+    <!-- add photos as ibiza-2026-01.jpg through ibiza-2026-40.jpg into /images/ -->
+    <div class="gallery-grid">
+      <a><img class="lb-img" src="../../images/ibiza-2026-01.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-02.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-03.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-04.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-05.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-06.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-07.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-08.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-09.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-10.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-11.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-12.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-13.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-14.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-15.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-16.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-17.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-18.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-19.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-20.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-21.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-22.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-23.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-24.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-25.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-26.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-27.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-28.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-29.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-30.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-31.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-32.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-33.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-34.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-35.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-36.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-37.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-38.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-39.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/ibiza-2026-40.jpg" alt="Sunshine Souls, Ibiza" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+    </div>
+  </div>
 
-  <!-- Empty state — shows until photos load -->
-  <div id="emptyGallery" style="padding:40px 10vw 0;display:none;">
-    <p style="font-size:15px;color:var(--sage-mid);font-style:italic;line-height:1.8;">Gallery coming soon — more photography will be added after Ibiza 2026. In the meantime, <a href="https://instagram.com/montanacindy_" target="_blank" rel="noopener noreferrer" style="color:var(--forest);border-bottom:1px solid var(--sage);text-decoration:none;">visit Instagram</a> to see recent work.</p>
+  <div class="portfolio-cat">
+    <span class="eyebrow portfolio-cat-label">Nicaragua</span>
+    <div class="gallery-grid">
+      <a><img class="lb-img" src="../../images/nicaragua-2024-01.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2024-02.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2024-03.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2024-04.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2024-05.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2024-06.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2025-01.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2025-02.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2025-03.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2025-04.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2025-05.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/nicaragua-2025-06.jpg" alt="Nicaragua" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+    </div>
+  </div>
+
+  <div class="portfolio-cat">
+    <span class="eyebrow portfolio-cat-label">World Yoga Festival</span>
+    <!-- add photos as world-yoga-festival-2026-01.jpg through -40.jpg into /images/ -->
+    <div class="gallery-grid">
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-01.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-02.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-03.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-04.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-05.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-06.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-07.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-08.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-09.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-10.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-11.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-12.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-13.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-14.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-15.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-16.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-17.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-18.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-19.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-20.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-21.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-22.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-23.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-24.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-25.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-26.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-27.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-28.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-29.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-30.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-31.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-32.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-33.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-34.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-35.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-36.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-37.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-38.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-39.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/world-yoga-festival-2026-40.jpg" alt="World Yoga Festival" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+    </div>
+  </div>
+
+  <div class="portfolio-cat">
+    <span class="eyebrow portfolio-cat-label">Moments</span>
+    <!-- add photos as portfolio-moment-01.jpg through -20.jpg into /images/ — anything that doesn't belong to a specific set -->
+    <div class="gallery-grid">
+      <a><img class="lb-img" src="../../images/portfolio-moment-01.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-02.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-03.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-04.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-05.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-06.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-07.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-08.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-09.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-10.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-11.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-12.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-13.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-14.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-15.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-16.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-17.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-18.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-19.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+      <a><img class="lb-img" src="../../images/portfolio-moment-20.jpg" alt="Moment" loading="lazy" onerror="this.parentElement.style.display='none'" onclick="event.preventDefault();openLightbox(this)"></a>
+    </div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="portfolio-lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" onclick="navLightbox(-1)" aria-label="Previous">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lb-nav lb-next" onclick="navLightbox(1)" aria-label="Next">&#8250;</button>
+</div>
 
 <!-- VIDEOGRAPHY -->
 <section style="background:var(--forest);padding:80px 10vw;">
@@ -243,111 +372,6 @@
 
     <p style="font-family:'Jost',sans-serif;font-size:12px;color:rgba(191,192,171,0.45);margin-bottom:24px;">More video portfolio coming after Ibiza 2026.</p>
     
-    <!-- INSTAGRAM REELS EMBED SECTION -->
-<div style="margin-top:32px;padding-top:28px;border-top:1px solid rgba(191,192,171,0.15);">
-  <p style="font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(191,192,171,0.5);margin-bottom:20px;">Ibiza 2026 · Day by day</p>
-  
-  <!-- Horizontal scroll row — 9:16 reel cards -->
-  <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:rgba(191,192,171,0.2) transparent;">
-    
-    <a href="https://www.instagram.com/reel/DYsSExGtkzC/" 
-       target="_blank" rel="noopener noreferrer"
-       style="flex:0 0 auto;width:180px;text-decoration:none;display:flex;flex-direction:column;">
-      <div style="width:180px;height:320px;background:rgba(255,255,255,0.06);border:1px solid rgba(191,192,171,0.15);border-radius:4px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
-        <!-- IG thumbnail via oEmbed proxy -->
-        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(77,85,76,0.3);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(217,179,130,0.7)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.6);letter-spacing:0.1em;text-transform:uppercase;">Watch on Instagram</span>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(25,32,25,0.8));padding:12px 10px 10px;">
-          <span style="font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(239,232,220,0.9);">▶ Day 1</span>
-        </div>
-      </div>
-      <p style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.4);text-align:center;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Day 1 · Ibiza 2026</p>
-    </a>
-    <a href="https://www.instagram.com/reel/DYuHWp2N8CC/" 
-       target="_blank" rel="noopener noreferrer"
-       style="flex:0 0 auto;width:180px;text-decoration:none;display:flex;flex-direction:column;">
-      <div style="width:180px;height:320px;background:rgba(255,255,255,0.06);border:1px solid rgba(191,192,171,0.15);border-radius:4px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
-        <!-- IG thumbnail via oEmbed proxy -->
-        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(77,85,76,0.3);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(217,179,130,0.7)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.6);letter-spacing:0.1em;text-transform:uppercase;">Watch on Instagram</span>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(25,32,25,0.8));padding:12px 10px 10px;">
-          <span style="font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(239,232,220,0.9);">▶ Day 2</span>
-        </div>
-      </div>
-      <p style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.4);text-align:center;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Day 2 · Ibiza 2026</p>
-    </a>
-    <a href="https://www.instagram.com/reel/DYxqkS2NA-4/" 
-       target="_blank" rel="noopener noreferrer"
-       style="flex:0 0 auto;width:180px;text-decoration:none;display:flex;flex-direction:column;">
-      <div style="width:180px;height:320px;background:rgba(255,255,255,0.06);border:1px solid rgba(191,192,171,0.15);border-radius:4px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
-        <!-- IG thumbnail via oEmbed proxy -->
-        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(77,85,76,0.3);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(217,179,130,0.7)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.6);letter-spacing:0.1em;text-transform:uppercase;">Watch on Instagram</span>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(25,32,25,0.8));padding:12px 10px 10px;">
-          <span style="font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(239,232,220,0.9);">▶ Day 3</span>
-        </div>
-      </div>
-      <p style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.4);text-align:center;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Day 3 · Ibiza 2026</p>
-    </a>
-    <a href="https://www.instagram.com/reel/DY0E_NwNCY7/" 
-       target="_blank" rel="noopener noreferrer"
-       style="flex:0 0 auto;width:180px;text-decoration:none;display:flex;flex-direction:column;">
-      <div style="width:180px;height:320px;background:rgba(255,255,255,0.06);border:1px solid rgba(191,192,171,0.15);border-radius:4px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
-        <!-- IG thumbnail via oEmbed proxy -->
-        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(77,85,76,0.3);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(217,179,130,0.7)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.6);letter-spacing:0.1em;text-transform:uppercase;">Watch on Instagram</span>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(25,32,25,0.8));padding:12px 10px 10px;">
-          <span style="font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(239,232,220,0.9);">▶ Day 4</span>
-        </div>
-      </div>
-      <p style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.4);text-align:center;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Day 4 · Ibiza 2026</p>
-    </a>
-    <a href="https://www.instagram.com/reel/DY28hd6t9Uy/" 
-       target="_blank" rel="noopener noreferrer"
-       style="flex:0 0 auto;width:180px;text-decoration:none;display:flex;flex-direction:column;">
-      <div style="width:180px;height:320px;background:rgba(255,255,255,0.06);border:1px solid rgba(191,192,171,0.15);border-radius:4px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
-        <!-- IG thumbnail via oEmbed proxy -->
-        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(77,85,76,0.3);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(217,179,130,0.7)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.6);letter-spacing:0.1em;text-transform:uppercase;">Watch on Instagram</span>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(25,32,25,0.8));padding:12px 10px 10px;">
-          <span style="font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(239,232,220,0.9);">▶ Day 5</span>
-        </div>
-      </div>
-      <p style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.4);text-align:center;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Day 5 · Ibiza 2026</p>
-    </a>
-    <a href="https://www.instagram.com/reel/DY7uXJUNgbQ/" 
-       target="_blank" rel="noopener noreferrer"
-       style="flex:0 0 auto;width:180px;text-decoration:none;display:flex;flex-direction:column;">
-      <div style="width:180px;height:320px;background:rgba(255,255,255,0.06);border:1px solid rgba(191,192,171,0.15);border-radius:4px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
-        <!-- IG thumbnail via oEmbed proxy -->
-        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(77,85,76,0.3);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(217,179,130,0.7)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.6);letter-spacing:0.1em;text-transform:uppercase;">Watch on Instagram</span>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(25,32,25,0.8));padding:12px 10px 10px;">
-          <span style="font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(239,232,220,0.9);">▶ Day 6</span>
-        </div>
-      </div>
-      <p style="font-family:'Jost',sans-serif;font-size:9px;color:rgba(191,192,171,0.4);text-align:center;margin:6px 0 0;letter-spacing:0.08em;text-transform:uppercase;">Day 6 · Ibiza 2026</p>
-    </a>
-  </div>
-  
-  <p style="font-family:'Jost',sans-serif;font-size:11px;color:rgba(191,192,171,0.35);margin-top:14px;line-height:1.7;">
-    Click any reel to watch on Instagram. Follow 
-    <a href="https://instagram.com/montanacindy_" target="_blank" rel="noopener noreferrer" style="color:rgba(191,192,171,0.5);text-decoration:none;">@montanacindy_</a> 
-    for more behind the scenes.
-  </p>
-</div>
         
         
 
@@ -426,22 +450,34 @@ document.getElementById('hamburger').addEventListener('click', function(){
   document.getElementById('mobile-menu')?.classList.toggle('open');
   this.classList.toggle('open');
 });
-// Gallery visibility check
-function checkGallery() {
-  const imgs = document.querySelectorAll('.gallery-grid a');
-  const visible = [...imgs].filter(a => a.style.display !== 'none');
-  if (visible.length === 0) {
-    document.getElementById('emptyGallery').style.display = 'block';
-    document.getElementById('galleryGrid').style.display = 'none';
-  } else {
-    document.getElementById('emptyGallery').style.display = 'none';
-    document.getElementById('galleryGrid').style.display = '';
-  }
+// Lightbox — click any portfolio photo to enlarge, arrows to move through all photos
+let lbIndex = 0;
+function getLbImgs() { return [...document.querySelectorAll('.lb-img')].filter(img => img.style.display !== 'none' && img.complete && img.naturalWidth > 0); }
+function openLightbox(imgEl) {
+  const imgs = getLbImgs();
+  lbIndex = imgs.indexOf(imgEl);
+  if (lbIndex === -1) lbIndex = 0;
+  showLightbox(imgs);
 }
-// Check after short delay to allow images to attempt loading
-window.addEventListener('load', () => setTimeout(checkGallery, 800));
-// Also check immediately in case images are cached
-document.addEventListener('DOMContentLoaded', () => setTimeout(checkGallery, 1200));
+function showLightbox(imgs) {
+  if (!imgs.length) return;
+  document.getElementById('lightbox-img').src = imgs[lbIndex].src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function navLightbox(dir) {
+  const imgs = getLbImgs();
+  lbIndex = (lbIndex + dir + imgs.length) % imgs.length;
+  showLightbox(imgs);
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
 </script>
 </body>
 </html>
