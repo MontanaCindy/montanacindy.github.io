@@ -16,25 +16,25 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mindfulearth.eco/pages/grounded-growth/</loc>
+    <loc>https://mindfulearth.eco/grounded-growth/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://mindfulearth.eco/pages/genuine-reach/</loc>
+    <loc>https://mindfulearth.eco/genuine-reach/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://mindfulearth.eco/pages/nervous-system-nourishment/</loc>
+    <loc>https://mindfulearth.eco/nervous-system-nourishment/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mindfulearth.eco/pages/self-love-handbook/</loc>
+    <loc>https://mindfulearth.eco/self-love-handbook/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -212,9 +212,9 @@
   <url><loc>https://mindfulearth.eco/journal/community-in-wellness/</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://mindfulearth.eco/journal/authentic-marketing/</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://mindfulearth.eco/journal/the-long-way-home/</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mindfulearth.eco/pages/team/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://mindfulearth.eco/pages/upcoming/</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mindfulearth.eco/pages/courses/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://mindfulearth.eco/pages/free-classes/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://mindfulearth.eco/pages/community-access-fund/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mindfulearth.eco/team/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mindfulearth.eco/upcoming/</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mindfulearth.eco/courses/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://mindfulearth.eco/free-classes/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://mindfulearth.eco/community-access-fund/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
